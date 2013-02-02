@@ -48,7 +48,7 @@ public class LinkedList
 
     private node head;
     private node tail;
-    private node selection;
+    private node selection = new node(null);
 
     //constructor creates a single node with a null link
     LinkedList()
@@ -60,23 +60,22 @@ public class LinkedList
     public int length()
     {
         int counter = 0;
+        selection.link = head.link;
         if(this.head.link == null)
         {
             return 0;
         }
 
-        if(selection.link == (null))
-        {
-            counter = 1;
-            return counter;
-        }
-
         while(this.selection.link != null)
         {
             counter += 1;
-            if(selection.link != null)
+            if(selection.link.link == null)
             {
-                selection = selection.link;
+                break;
+            }
+            else
+            {
+                selection.link = selection.link.link;
             }
         }
         return counter;
